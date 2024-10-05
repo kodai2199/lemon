@@ -187,7 +187,7 @@ class _InterpretableSamples:
 
         categories = [[0, 1, 2]] * self._X.shape[1] if self.perturb_injection else [[0, 1]] * self._X.shape[1]
         self._X_dummy = sklearn.preprocessing.OneHotEncoder(
-            categories=categories, drop="first", sparse=False
+            categories=categories, drop="first", sparse_output=False
         ).fit_transform(self._X)
 
         self.distances = np.array(self.distances)

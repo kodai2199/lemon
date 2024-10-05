@@ -268,7 +268,7 @@ def perturb_record_pair(
 
     if random_state is None:
         random_state = np.random.default_rng()
-    std_random = random.Random(random_state.integers(1e9))
+    std_random = random.Random(int(random_state.integers(1e9)))
 
     relevant_target_attrs = {}
     for source, attr in record_pair.columns.to_list():
@@ -334,7 +334,7 @@ def perturb_record_pair(
 
         if injections:
             max_injection_sampling = 0
-            for (source, attr, attr_or_val, j) in injections:
+            for source, attr, attr_or_val, j in injections:
                 target_source = "a" if source == "b" else "b"
                 target_attrs = relevant_target_attrs[(source, attr, attr_or_val)]
                 suggested_injection_sampling = 0
